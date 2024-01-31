@@ -30,6 +30,14 @@ func (cs *ProductService) CreateProduct(name, description, category_id, image_ur
 	return product, nil
 }
 
+func (cs *ProductService) GetProduct(id string) (*entity.Product, error) {
+	product, err := cs.ProductDB.GetProduct(id)
+	if err != nil {
+		return nil, err
+	}
+	return product, nil
+}
+
 func (cs *ProductService) GetProductByCategoryID(id string) ([]*entity.Product, error) {
 	products, err := cs.ProductDB.GetProductByCategoryID(id)
 	if err != nil {
